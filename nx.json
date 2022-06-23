@@ -28,7 +28,6 @@
     "appsDir": "packages",
     "libsDir": "packages"
   },
-  "defaultProject": "dekstop",
   "generators": {
     "@nrwl/web:application": {
       "style": "scss",
