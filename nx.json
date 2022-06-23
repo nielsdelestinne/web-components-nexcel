@@ -41,5 +41,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "desktop"
+  "defaultProject": "app-desktop"
 }

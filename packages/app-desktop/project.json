@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "packages/desktop/src",
+  "sourceRoot": "packages/app-desktop/src",
   "tags": [],
   "targets": {
     "build": {
@@ -9,26 +9,26 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/packages/desktop",
+        "outputPath": "dist/packages/app-desktop",
         "compiler": "babel",
-        "index": "packages/desktop/src/index.html",
+        "index": "packages/app-desktop/src/index.html",
         "baseHref": "/",
-        "main": "packages/desktop/src/main.ts",
-        "polyfills": "packages/desktop/src/polyfills.ts",
-        "tsConfig": "packages/desktop/tsconfig.app.json",
+        "main": "packages/app-desktop/src/main.ts",
+        "polyfills": "packages/app-desktop/src/polyfills.ts",
+        "tsConfig": "packages/app-desktop/tsconfig.app.json",
         "assets": [
-          "packages/desktop/src/favicon.ico",
-          "packages/desktop/src/assets"
+          "packages/app-desktop/src/favicon.ico",
+          "packages/app-desktop/src/assets"
         ],
-        "styles": ["packages/desktop/src/styles.scss"],
+        "styles": ["packages/app-desktop/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
         "production": {
           "fileReplacements": [
             {
-              "replace": "packages/desktop/src/environments/environment.ts",
-              "with": "packages/desktop/src/environments/environment.prod.ts"
+              "replace": "packages/app-desktop/src/environments/environment.ts",
+              "with": "packages/app-desktop/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -43,11 +43,11 @@
     "serve": {
       "executor": "@nrwl/web:dev-server",
       "options": {
-        "buildTarget": "desktop:build"
+        "buildTarget": "app-desktop:build"
       },
       "configurations": {
         "production": {
-          "buildTarget": "desktop:build:production"
+          "buildTarget": "app-desktop:build:production"
         }
       }
     },
@@ -55,14 +55,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/desktop/**/*.ts"]
+        "lintFilePatterns": ["packages/app-desktop/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/desktop"],
+      "outputs": ["coverage/packages/app-desktop"],
       "options": {
-        "jestConfig": "packages/desktop/jest.config.ts",
+        "jestConfig": "packages/app-desktop/jest.config.ts",
         "passWithNoTests": true
       }
     }

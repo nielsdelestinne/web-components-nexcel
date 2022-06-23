@@ -2,7 +2,6 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "desktop": "packages/desktop",
-    "desktop-e2e": "packages/desktop-e2e"
+    "app-desktop": "packages/app-desktop"
   }
 }
