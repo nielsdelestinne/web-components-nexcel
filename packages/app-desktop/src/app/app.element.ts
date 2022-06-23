@@ -1,14 +1,13 @@
 import './app.element.scss';
+import {template} from "./app.element.template";
 
 export class AppElement extends HTMLElement {
   public static observedAttributes = [];
 
   connectedCallback() {
-    const title = 'Nexcel: the next Excel';
-    this.innerHTML = `
-        <h1>${title}</h1>
-        <template></template>
-    `;
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }
+
 customElements.define('nexcel-root', AppElement);
