@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "dekstop": "packages/dekstop",
+    "dekstop-e2e": "packages/dekstop-e2e"
+  }
 }
