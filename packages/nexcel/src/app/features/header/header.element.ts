@@ -1,12 +1,8 @@
 import './header.element.scss';
-import {defineCustomElement} from "../../../../framework/define-custom-element.decorator";
+import {defineCustomElement} from "@nexcel/framework";
 
 @defineCustomElement('nexcel-header')
 export class HeaderElement extends HTMLElement {
-
-  constructor() {
-    super();
-  }
 
   connectedCallback() {
     const title = 'Nexcel: the next Excel!';
@@ -16,6 +12,5 @@ export class HeaderElement extends HTMLElement {
         </div>
       `;
   }
-}
 
-// customElements.define('nexcel-header', HeaderElement);
+}
