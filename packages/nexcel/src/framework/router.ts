@@ -11,8 +11,6 @@ class Router {
   }
 
   routeToComponent(route: Route) {
-    console.log(route);
-    console.log(this.rootElement.innerHTML);
     this.rootElement.innerHTML = route.component
   }
 
