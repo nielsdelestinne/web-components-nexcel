@@ -1,17 +1,26 @@
+import './app.element.scss'
+import {defineCustomElement} from "@nexcel/framework";
+
+@defineCustomElement('nexcel-root')
 export class AppElement extends HTMLElement {
   public static observedAttributes = [];
 
   connectedCallback() {
-    const shadow = this.attachShadow({mode: 'open'});
-    shadow.innerHTML = `
+    this.innerHTML = `
       <div class="wrapper">
         <div class="container">
-            <nexcel-header></nexcel-header>
-            <nexcel-spreadsheet></nexcel-spreadsheeT>
+            <section class="shadow-root">
+                <!-- shadow DOM-->
+            </section>
         </div>
       </div>
     `;
+
+    const shadowRoot = this.getElementsByClassName('shadow-root')[0];
+
+    shadowRoot.innerHTML = `
+      <nexcel-header></nexcel-header>
+      <nexcel-spreadsheet></nexcel-spreadsheeT>
+    `;
   }
 }
-
-customElements.define('nexcel-root', AppElement);
