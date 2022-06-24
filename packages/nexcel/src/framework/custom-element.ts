@@ -1,8 +1,13 @@
+import {EventType} from "./event-type";
+
 export abstract class CustomElement extends HTMLElement {
 
   constructor() {
     super();
-    this.id = `ID_${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}`;
+  }
+
+  emit(eventType: EventType, originalEvent: Event): void {
+    this.dispatchEvent(new CustomEvent<Event>(eventType, originalEvent));
   }
 
   abstract connectedCallback();

@@ -1,5 +1,6 @@
 import './app.element.scss'
 import {defineCustomElement} from "@nexcel/framework";
+import {EventType} from "../framework/event-type";
 
 @defineCustomElement('nexcel-root')
 export class AppElement extends HTMLElement {
@@ -19,5 +20,11 @@ export class AppElement extends HTMLElement {
     shadowRoot.innerHTML = `
       <nexcel-home></nexcel-home>
     `;
+
+    shadowRoot.addEventListener(EventType.CREATE_NEW_SPREADSHEET, this.handleEvent)
+  }
+
+  private handleEvent() {
+    console.log('handle in app');
   }
 }
