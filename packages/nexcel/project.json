@@ -1,0 +1,70 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "packages/nexcel/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/packages/nexcel",
+        "compiler": "babel",
+        "index": "packages/nexcel/src/index.html",
+        "baseHref": "/",
+        "main": "packages/nexcel/src/main.ts",
+        "polyfills": "packages/nexcel/src/polyfills.ts",
+        "tsConfig": "packages/nexcel/tsconfig.app.json",
+        "assets": [
+          "packages/nexcel/src/favicon.ico",
+          "packages/nexcel/src/assets"
+        ],
+        "styles": ["packages/nexcel/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "packages/nexcel/src/environments/environment.ts",
+              "with": "packages/nexcel/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "nexcel:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "nexcel:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/nexcel/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/nexcel"],
+      "options": {
+        "jestConfig": "packages/nexcel/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

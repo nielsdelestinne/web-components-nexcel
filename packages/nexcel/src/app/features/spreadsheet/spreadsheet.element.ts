@@ -1,8 +1,4 @@
-export function libSpreadsheet(): string {
-  return 'lib-spreadsheet';
-}
-
-export class Spreadsheet extends HTMLElement {
+export class SpreadsheetElement extends HTMLElement {
   constructor(private dimensions: Dimension = {height: 500, width: 500}) {
     super();
   }
@@ -15,6 +11,7 @@ export class Spreadsheet extends HTMLElement {
         style="background-color:black;"></canvas>
     `;
   }
+
 }
 
 export type Dimension = Readonly<{
@@ -22,4 +19,5 @@ export type Dimension = Readonly<{
   height: number;
 }>;
 
-customElements.define('nexcel-spreadsheet', Spreadsheet);
+customElements.define('nexcel-spreadsheet', SpreadsheetElement);
+

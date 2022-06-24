@@ -1,2 +1,2 @@
 import './app/app.element.ts';
-import '../../lib-spreadsheet/src/lib/lib-spreadsheet';
+import '../../nexcel/src/app/features/spreadsheet/lib-spreadsheet';

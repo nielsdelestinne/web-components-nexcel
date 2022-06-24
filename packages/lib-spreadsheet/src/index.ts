@@ -1,1 +1,1 @@
-export * from './lib/lib-spreadsheet';
+export * from '../../nexcel/src/app/features/spreadsheet/lib-spreadsheet';

@@ -1,7 +1,7 @@
-import {libSpreadsheet} from './lib-spreadsheet';
+import {spreadsheet} from '../../../nexcel/src/app/features/spreadsheet/lib-spreadsheet';
 
 describe('libSpreadsheet', () => {
   it('should work', () => {
-    expect(libSpreadsheet()).toEqual('lib-spreadsheet');
+    expect(spreadsheet()).toEqual('lib-spreadsheet');
   });
 });
