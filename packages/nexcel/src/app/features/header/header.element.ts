@@ -1,16 +1,21 @@
 import './header.element.scss';
-import {defineCustomElement} from "@nexcel/framework";
+import {CustomElement, defineCustomElement, EventType} from "@nexcel/framework";
 
 @defineCustomElement('nexcel-header')
-export class HeaderElement extends HTMLElement {
+export class HeaderElement extends CustomElement {
 
   connectedCallback() {
-    const title = 'Nexcel: the next Excel!';
     this.innerHTML = `
-        <div id="welcome">
-          <h1>${title} <span>(Exploration days)</span></h1>
+      <section id="header" class="flex-container">
+        <div class="flex-item">
+          <div class="flex-container shadow-root">
+              <button class="flex-item button-back">Back</button>
+          </div>
         </div>
-      `;
+      </section>
+    `;
+
+    this.addClickEventListener('button-back', event => this.bubble(EventType.BACK_HOME, event))
   }
 
 }

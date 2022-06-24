@@ -1,11 +1,8 @@
-import {CustomElement, defineCustomElement} from "@nexcel/framework";
+import {CustomElement, defineCustomElement, EventType} from "@nexcel/framework";
 import './home.element.scss';
-import {EventType} from "../../../framework/event-type";
 
 @defineCustomElement('nexcel-home')
 export class HomeElement extends CustomElement {
-
-  private top = 'x';
 
   connectedCallback() {
     this.innerHTML = `
@@ -20,15 +17,17 @@ export class HomeElement extends CustomElement {
       </section>
     `;
 
-    this.getElementsByClassName('button-new')[0].addEventListener('click', event => this.handleCreateNew(event))
-    this.getElementsByClassName('button-load')[0].addEventListener('click', event => this.handleLoadExisting(event))
+    this.addClickEventListener('button-new', event => this.handleCreateNew(event))
+    this.addClickEventListener('button-load', event => this.handleCreateNew(event));
   }
 
   private handleCreateNew(event: Event) {
-    this.emit(EventType.CREATE_NEW_SPREADSHEET, event);
+    console.log('Creating a new spreadsheet');
+    this.bubble(EventType.CREATE_NEW_SPREADSHEET, event);
   }
 
   private handleLoadExisting(event: Event) {
-    this.emit(EventType.LOAD_EXISTING_SPREADSHEET, event);
+    console.log('Loading an existing spreadsheet');
+    this.bubble(EventType.LOAD_EXISTING_SPREADSHEET, event);
   }
 }

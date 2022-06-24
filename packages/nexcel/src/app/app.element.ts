@@ -6,6 +6,8 @@ import {EventType} from "../framework/event-type";
 export class AppElement extends HTMLElement {
   public static observedAttributes = [];
 
+  private shadowRootElement: Element;
+
   connectedCallback() {
     this.innerHTML = `
       <div class="flex-container">
@@ -15,16 +17,26 @@ export class AppElement extends HTMLElement {
       </div>
     `;
 
-    const shadowRoot = this.getElementsByClassName('shadow-root')[0];
+    this.shadowRootElement = this.getElementsByClassName('shadow-root')[0];
 
-    shadowRoot.innerHTML = `
+    this.shadowRootElement.innerHTML = `
       <nexcel-home></nexcel-home>
     `;
 
-    shadowRoot.addEventListener(EventType.CREATE_NEW_SPREADSHEET, this.handleEvent)
+    this.shadowRootElement.addEventListener(EventType.CREATE_NEW_SPREADSHEET, event => this.handleCreateNewSpreadsheet(event))
+    this.shadowRootElement.addEventListener(EventType.BACK_HOME, event => this.handleBackHome(event))
   }
 
-  private handleEvent() {
-    console.log('handle in app');
+  private handleCreateNewSpreadsheet(event: Event) {
+    this.shadowRootElement.innerHTML = `
+      <nexcel-header></nexcel-header>
+      <nexcel-spreadsheet></nexcel-spreadsheet>
+    `;
+  }
+
+  private handleBackHome(event: Event) {
+    this.shadowRootElement.innerHTML = `
+      <nexcel-home></nexcel-home>
+    `;
   }
 }
