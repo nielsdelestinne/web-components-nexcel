@@ -40,6 +40,5 @@
       "linter": "eslint",
       "unitTestRunner": "jest"
     }
-  },
-  "defaultProject": "app-desktop"
+  }
 }

@@ -2,8 +2,6 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "app-desktop": "packages/app-desktop",
-    "lib-spreadsheet": "packages/lib-spreadsheet",
     "nexcel": "packages/nexcel"
   }
 }
