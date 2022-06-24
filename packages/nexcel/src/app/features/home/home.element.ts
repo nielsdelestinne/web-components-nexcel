@@ -1,5 +1,6 @@
-import {CustomElement, defineCustomElement, EventType} from "@nexcel/framework";
+import {CustomElement, defineCustomElement, singletonRouter} from "@nexcel/framework";
 import './home.element.scss';
+import {SpreadsheetFeature} from "../spreadsheet/spreadsheet.feature";
 
 @defineCustomElement('nexcel-home')
 export class HomeElement extends CustomElement {
@@ -17,17 +18,12 @@ export class HomeElement extends CustomElement {
       </section>
     `;
 
-    this.addClickEventListener('button-new', event => this.handleCreateNew(event))
-    this.addClickEventListener('button-load', event => this.handleCreateNew(event));
-  }
-
-  private handleCreateNew(event: Event) {
-    console.log('Creating a new spreadsheet');
-    this.bubble(EventType.CREATE_NEW_SPREADSHEET, event);
+    this.addClickEventListener('button-new', () => singletonRouter.routeToComponent(SpreadsheetFeature.route))
+    this.addClickEventListener('button-load', event => this.handleLoadExisting(event));
   }
 
   private handleLoadExisting(event: Event) {
     console.log('Loading an existing spreadsheet');
-    this.bubble(EventType.LOAD_EXISTING_SPREADSHEET, event);
+    this.bubbleAsCustomEvent('loadExistingSpreadsheetButtonClicked', event);
   }
 }

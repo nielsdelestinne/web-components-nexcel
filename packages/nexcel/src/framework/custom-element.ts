@@ -1,14 +1,12 @@
-import {EventType} from "./event-type";
-
 export abstract class CustomElement extends HTMLElement {
 
   constructor() {
     super();
   }
 
-  bubble(eventType: EventType, originalEvent: Event): void {
+  bubbleAsCustomEvent(customEventType: string, originalEvent: Event): void {
     originalEvent.stopPropagation();
-    this.dispatchEvent(new CustomEvent<Event>(eventType, originalEvent));
+    this.dispatchEvent(new CustomEvent<Event>(customEventType, originalEvent));
   }
 
   protected addClickEventListener(uniqueClassName: string, handleEvent: (event) => void): CustomElement {

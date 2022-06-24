@@ -1,5 +1,6 @@
 import './header.element.scss';
-import {CustomElement, defineCustomElement, EventType} from "@nexcel/framework";
+import {CustomElement, defineCustomElement, singletonRouter} from "@nexcel/framework";
+import {HomeFeature} from "../../features/home/home.feature";
 
 @defineCustomElement('nexcel-header')
 export class HeaderElement extends CustomElement {
@@ -15,7 +16,7 @@ export class HeaderElement extends CustomElement {
       </section>
     `;
 
-    this.addClickEventListener('button-back', event => this.bubble(EventType.BACK_HOME, event))
+    this.addClickEventListener('button-back', event => singletonRouter.routeToComponent(HomeFeature.route))
   }
 
 }

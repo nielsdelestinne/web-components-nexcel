@@ -1,11 +1,10 @@
-import './app.element.scss'
-import {defineCustomElement} from "@nexcel/framework";
-import {EventType} from "../framework/event-type";
+import './app.element.scss';
+import {defineCustomElement, singletonRouter} from '@nexcel/framework';
+import {routes} from './app.routing';
+import {HomeFeature} from './features/home/home.feature';
 
 @defineCustomElement('nexcel-root')
 export class AppElement extends HTMLElement {
-  public static observedAttributes = [];
-
   private shadowRootElement: Element;
 
   connectedCallback() {
@@ -18,25 +17,7 @@ export class AppElement extends HTMLElement {
     `;
 
     this.shadowRootElement = this.getElementsByClassName('shadow-root')[0];
-
-    this.shadowRootElement.innerHTML = `
-      <nexcel-home></nexcel-home>
-    `;
-
-    this.shadowRootElement.addEventListener(EventType.CREATE_NEW_SPREADSHEET, event => this.handleCreateNewSpreadsheet(event))
-    this.shadowRootElement.addEventListener(EventType.BACK_HOME, event => this.handleBackHome(event))
-  }
-
-  private handleCreateNewSpreadsheet(event: Event) {
-    this.shadowRootElement.innerHTML = `
-      <nexcel-header></nexcel-header>
-      <nexcel-spreadsheet></nexcel-spreadsheet>
-    `;
-  }
-
-  private handleBackHome(event: Event) {
-    this.shadowRootElement.innerHTML = `
-      <nexcel-home></nexcel-home>
-    `;
+    singletonRouter.initialize(routes, this.shadowRootElement);
+    singletonRouter.routeToComponent(HomeFeature.route);
   }
 }
