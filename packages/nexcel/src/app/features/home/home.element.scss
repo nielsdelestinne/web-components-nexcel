@@ -1,0 +1,43 @@
+#home {
+  margin-top: 2.5rem;
+}
+
+#home h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+#home span {
+  display: block;
+  font-size: 1.875rem;
+  font-weight: 300;
+  line-height: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  padding: 2rem 4rem;
+  border: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.button-new {
+  background: #629c28;
+  color: white;
+}
+
+.button-new:hover {
+  background: #3d6e0d;
+}
+
+.button-load {
+  background: #1E88E5;
+  color: white;
+}
+
+.button-load:hover {
+  background: #0b5494;
+}

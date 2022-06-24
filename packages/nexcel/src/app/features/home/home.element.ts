@@ -1,15 +1,23 @@
 import {defineCustomElement} from "@nexcel/framework";
+import './home.element.scss';
 
 @defineCustomElement('nexcel-home')
 export class HomeElement extends HTMLElement {
 
   connectedCallback() {
-    const title = 'Nexcel: the next Excel!';
+    const title = 'Nexcel';
+    const subTitle = 'The next Excel';
     this.innerHTML = `
-        <div id="welcome">
-          <h1>${title} <span>(Exploration days)</span></h1>
+      <section id="home" class="flex-container">
+        <div class="flex-item">
+          <h1>${title} <br> <span>${subTitle}</span></h1>
+          <div class="flex-container">
+              <button class="flex-item button-new" id="create-new">New</button>
+              <button class="flex-item button-load">Load</button>
+          </div>
         </div>
-      `;
+      </section>
+    `;
   }
 
 }

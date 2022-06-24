@@ -7,20 +7,17 @@ export class AppElement extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-      <div class="wrapper">
-        <div class="container">
-            <section class="shadow-root">
-                <!-- shadow DOM-->
-            </section>
-        </div>
+      <div class="flex-container">
+          <section class="shadow-root flex-item">
+              <!-- shadow DOM-->
+          </section>
       </div>
     `;
 
     const shadowRoot = this.getElementsByClassName('shadow-root')[0];
 
     shadowRoot.innerHTML = `
-      <nexcel-header></nexcel-header>
-      <nexcel-spreadsheet></nexcel-spreadsheeT>
+      <nexcel-home></nexcel-home>
     `;
   }
 }
