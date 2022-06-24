@@ -1,6 +1,7 @@
 import {CustomElement, defineCustomElement, singletonRouter} from "@nexcel/framework";
 import './home.element.scss';
 import {SpreadsheetFeature} from "../spreadsheet/spreadsheet.feature";
+import {LoadSpreadsheetFeature} from "../load-spreadsheet/load-spreadsheet.feature";
 
 @defineCustomElement('nexcel-home')
 export class HomeElement extends CustomElement {
@@ -24,6 +25,6 @@ export class HomeElement extends CustomElement {
 
   private handleLoadExisting(event: Event) {
     console.log('Loading an existing spreadsheet');
-    this.bubbleAsCustomEvent('loadExistingSpreadsheetButtonClicked', event);
+    this.bubbleAsCustomEvent(LoadSpreadsheetFeature.route.name, event);
   }
 }
