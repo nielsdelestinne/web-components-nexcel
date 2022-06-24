@@ -1,7 +1,7 @@
 import './header.element.scss';
-import {registerCustomElement} from "../../../framework/register-custom-element.decorator";
+import {defineCustomElement} from "../../../../framework/define-custom-element.decorator";
 
-@registerCustomElement('nexcel-header')
+@defineCustomElement('nexcel-header')
 export class HeaderElement extends HTMLElement {
 
   constructor() {
@@ -18,4 +18,4 @@ export class HeaderElement extends HTMLElement {
   }
 }
 
-customElements.define('nexcel-header', HeaderElement);
+// customElements.define('nexcel-header', HeaderElement);
