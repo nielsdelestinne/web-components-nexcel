@@ -1,5 +1,7 @@
 import './header.element.scss';
+import {registerCustomElement} from "../../../framework/register-custom-element.decorator";
 
+@registerCustomElement('nexcel-header')
 export class HeaderElement extends HTMLElement {
 
   constructor() {
